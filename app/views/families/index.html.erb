@@ -1,0 +1,20 @@
+<h1>Families</h1>
+
+<table class="maint">
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th class="action"><%= link_to 'New', new_family_path %></th>
+  </tr>
+
+<% for family in @families %>
+  <tr>
+    <td><%= link_to h(family.full_name), family %></td>
+    <td><%=h family.full_address %></td>
+    <td class="action">
+      <%= link_to 'Edit', edit_family_path(family) %>
+      <%= link_to 'Delete', family, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>

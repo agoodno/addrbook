@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <!--meta name="Description" content="Information architecture, Web Design, Web Standards." /-->
+    <!--meta name="Keywords" content="your, keywords"/-->
+    <!--meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/-->
+    <!--meta name="Distribution" content="Global"/-->
+    <!--meta name="Author" content="Erwin Aligam - ealigam@gmail.com"/-->
+    <!--meta name="Robots" content="index,follow"/-->
+    <title>Address Book Application <%= controller.action_name %></title>
+    <%= stylesheet_link_tag 'HarvestField' %>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag :defaults %>
+  </head>
+  <body id="application">
+    <div id="wrap">
+      <%= render :partial => 'shared/header', :locals => { :admin => false } %>
+      
+      <div id="nav">
+        <div id="light-brown-line"></div>       
+        <ul>
+          <li id="homeNav"><a href="/">Home</a></li>
+          <li id="aboutNav"><%= link_to 'About', :controller => :about %></li>
+        </ul>
+      </div>  
+      
+      <div id="content-wrap">
+        <div class="flash-notice"><%= flash[:notice] %></div>
+        <%= yield  %>
+      </div>
+
+      <%= render :partial => 'shared/footer', :locals => { :admin => false } %>
+    </div>
+  </body>
+</html>

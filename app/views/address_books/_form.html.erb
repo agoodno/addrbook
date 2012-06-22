@@ -1,0 +1,22 @@
+<h1><%= title %> Address Book</h1>
+
+<div class="entryaction">
+<p>
+  <% unless action == 'Create' %>
+  <%= link_to 'Show', @address_book %> |
+  <% end %>
+  <%= link_to 'Back', address_books_path %>
+</p>
+</div>
+
+<% form_for(@address_book) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit action %>
+  </p>
+<% end %>

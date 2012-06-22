@@ -1,0 +1,20 @@
+<h1>Listing User Address Books</h1>
+
+<table class="maint">
+  <tr>
+    <th>Title</th>
+    <th>User Name</th>
+    <th class="action"><%= link_to 'New', new_user_address_book_path %></th>
+  </tr>
+
+<% for user_address_book in @user_address_books %>
+  <tr>
+    <td><%= link_to h(user_address_book.address_book.title), user_address_book.address_book %></td>
+    <td><%= link_to h(user_address_book.user.name), user_address_book.user %></td>
+    <td class="action">
+      <%= link_to 'Edit', edit_user_address_book_path(user_address_book) %>
+      <%= link_to 'Delete', user_address_book, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>

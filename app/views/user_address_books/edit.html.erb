@@ -1,0 +1,34 @@
+<h1>Editing user_address_book</h1>
+
+<% form_for(@user_address_book) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <label for="user_address_book_user_id">User:</label><br/>
+    <select id="user_address_book_user_id" name="user_address_book[user_id]">
+      <option value="" selected="true">---Select---</option>
+<% @users.each do |user| -%>
+      <option value="<%= user.id %>"<%= ' selected' if user.id == @user_address_book.user_id %>>
+        <%= user.name %>
+      </option>
+<% end -%>
+    </select>
+  </p>
+  <p>
+    <label for="user_address_book_address_book_id">Address Book:</label><br/>
+    <select id="user_address_book_address_book_id" name="user_address_book[address_book_id]">
+      <option value="" selected="true">---Select---</option>
+<% @address_books.each do |address_book| -%>
+      <option value="<%= address_book.id %>"<%= ' selected' if address_book.id == @user_address_book.address_book_id %>>
+        <%= address_book.title %>
+      </option>
+<% end -%>
+    </select>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @user_address_book %> |
+<%= link_to 'Back', user_address_books_path %>

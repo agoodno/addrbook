@@ -1,0 +1,23 @@
+<h1>Users</h1>
+
+<table class="maint">
+  <tr>
+    <th>Name</th>
+    <th>Login</th>
+    <th>Email</th>
+    <th class="action"><%= link_to 'New', new_user_path %></th>
+  </tr>
+
+<% for user in @users %>
+  <tr>
+    <td><%=link_to h(user.name), user %></td>
+    <td><%=h user.login %></td>
+    <td><%=h user.email %></td>
+    <td class="action">
+      <%= link_to 'Edit', edit_user_path(user) %>
+      <%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+

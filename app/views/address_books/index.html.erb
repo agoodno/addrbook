@@ -1,0 +1,18 @@
+<h1>Listing Address Books</h1>
+
+<table class="maint">
+  <tr>
+    <th>Title</th>
+    <th class="action"><%= link_to 'New', new_address_book_path %></th>
+  </tr>
+
+<% for address_book in @address_books %>
+  <tr>
+    <td><%= link_to h(address_book.title), address_book %></td>
+    <td class="action">
+      <%= link_to 'Edit', edit_address_book_path(address_book) %>
+      <%= link_to 'Delete', address_book, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>

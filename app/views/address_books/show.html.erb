@@ -1,0 +1,15 @@
+<h1>Showing Address Book</h1>
+
+<div class="entryaction">
+<p>
+<%= link_to 'Edit', edit_address_book_path(@address_book) %> |
+<%= link_to 'Back', address_books_path %>
+</p>
+</div>
+
+<div class="entry">
+<p>
+  <b>Title:</b>
+  <%=h @address_book.title %>
+</p>
+</div>

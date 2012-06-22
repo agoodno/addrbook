@@ -1,0 +1,26 @@
+<div id="session-addrbook">
+  <% form_for :user_address_book, :url => { :controller => "main", :action => "index" }, :html => { :method => :get, :name => 'which_book' } do %>
+  <span id="session-addrbook-label">Address Book:</span>
+  <%= select(:user_address_book, :id, @user_address_books.collect{ |uab| [uab.address_book.title, uab.id] }, {}, :onchange => 'document.which_book.submit();') %>
+  <% end %>
+</div>
+<table class="maint">
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+  </tr>
+<% @families.each do |family| %>
+  <tr>
+    <td style="width: 35%;"><%= link_to h(family.full_name), main_path(family.id) %></td>
+    <td style="width: 50%;"><%=h family.full_address %></td>
+    <td class="action">
+      <%= link_to_remote 'Edit', :url => { :controller => 'main', :action => 'edit_pre', :id => family.id }, :update => 'andy' %>
+      <%= link_to 'Delete', main_path(family), :html => { :method => :delete }, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+  </tr>
+  <tr>
+    <td id="andy" colspan="3">
+    </td>
+  </tr>
+<% end %>
+</table>

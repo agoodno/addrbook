@@ -1,0 +1,19 @@
+<div id="header">           
+  <h1 id="logo-text"><a href="/" title="">address<span>book</span></a></h1>         
+  <h2 id="slogan">track down your family</h2>
+  <div id="header-links">
+    <p>
+      <% if logged_in? -%>
+        <% if admin == false -%>
+        <%= link_to("Admin", admin_path) + ' |' %>
+        <% else %>
+        <%= link_to("Home", '/') + ' |' %>
+        <% end -%>
+        Logged in as <%= link_to_current_user :content_method => :login %> |
+        <%= link_to "Log out", logout_path, { :title => "Log out" } %>
+      <% else %>
+        <%= link_to "Log In", login_path %>
+      <% end -%>
+    </p>
+  </div>        
+</div>

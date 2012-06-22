@@ -1,0 +1,41 @@
+<h1>Showing Member</h1>
+
+<div class="entryaction">
+<p>
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>
+</p>
+</div>
+
+<div class="entry">
+<p>
+  <b>First name:</b>
+  <%=h @member.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @member.last_name %>
+</p>
+
+<p>
+  <b>Family:</b>
+  <%=h @member.family.full_name %>
+</p>
+
+<p>
+  <b>Home phone:</b>
+  <%=h @member.home_phone %>
+</p>
+
+<p>
+  <b>Work phone:</b>
+  <%=h @member.work_phone %>
+</p>
+
+<p>
+  <b>Cell phone:</b>
+  <%=h @member.cell_phone %>
+</p>
+
+</div>

@@ -1,0 +1,46 @@
+<h1><%= title %> Family</h1>
+
+<div class="entryaction">
+<p>
+  <% unless action == 'Create' %>
+  <%= link_to 'Show', @family %> |
+  <% end %>
+  <%= link_to 'Back', families_path %>
+</p>
+</div>
+
+<% form_for(@family) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :informal_name %><br />
+    <%= f.text_field :informal_name %>
+  </p>
+  <p>
+    <%= f.label :formal_name %><br />
+    <%= f.text_field :formal_name %>
+  </p>
+  <p>
+    <%= f.label :addr_line_1 %><br />
+    <%= f.text_field :addr_line_1 %>
+  </p>
+  <p>
+    <%= f.label :addr_line_2 %><br />
+    <%= f.text_field :addr_line_2 %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.label :zip_code %><br />
+    <%= f.text_field :zip_code %>
+  </p>
+   <p>
+    <%= f.submit action %>
+  </p>
+<% end %>

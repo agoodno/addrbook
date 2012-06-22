@@ -1,0 +1,32 @@
+<h1>Show User</h1>
+
+<div class="entryaction">
+<p>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+</p>
+</div>
+
+<% form_for (@user) do |f| -%>
+<p>
+  <%= label_tag 'name' %>
+  <%=h @user.name %>
+</p>
+
+<p>
+  <%= label_tag 'login' %>
+  <%=h @user.login %>
+</p>
+
+<p>
+  <%= label_tag 'email' %>
+  <%=h @user.email %>
+</p>
+
+<p>
+  <b>Address Books:</b>
+  <% @user.address_books.each do |addr_book| %>
+  <br/><%= link_to addr_book.title, :controller => 'address_book', :action => 'show', :id => addr_book.id %>
+  <% end %>
+</p>
+<% end -%>
