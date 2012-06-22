@@ -40,8 +40,8 @@ class MainController < ApplicationController
     end
   end
 
-  # GET /main/new
-  # GET /main/new.xml
+  # GET /families/new
+  # GET /families/new.xml
   def new
     @family = Family.new
 
@@ -51,28 +51,25 @@ class MainController < ApplicationController
     end
   end
 
-  # GET /main/1/edit
-  def edit_pre
-    render :update do |page|
-      page.replace_html :bottom, 'andy', "<tr><td>Hello</td></tr>"
-#      page.replace_html 'flash_notice' , "Todo added"
-#       page.show 'flash_notice'
-#       page.delay(3) do
-#         page.replace_html 'flash_notice' , ''
-#         page.hide 'flash_notice'
-#       end
-    end
+  # GET /families/1/edit
+  def say_when
+    @family = Family.find(params[:id])
+    render :layout => false
+#     render :update do |page|
+#       page.show 'andyrow'
+#     end
   end
 
-  # GET /main/1/edit
+  # GET /families/1/edit
   def edit
     @family = Family.find(params[:id])
+    render :text => "<b>#{@family.informal_name}</b>"
   end
 
-  # POST /main
-  # POST /main.xml
+  # POST /families
+  # POST /families.xml
   def create
-    @family = Family.new(params[:main])
+    @family = Family.new(params[:family])
 
     respond_to do |format|
       if @family.save
@@ -86,15 +83,15 @@ class MainController < ApplicationController
     end
   end
 
-  # PUT /main/1
-  # PUT /main/1.xml
+  # PUT /families/1
+  # PUT /families/1.xml
   def update
     @family = Family.find(params[:id])
 
     respond_to do |format|
       if @family.update_attributes(params[:main])
-        flash[:notice] = 'Record was successfully updated.'
-        format.html { redirect_to(main_url) }
+        flash[:notice] = 'Family was successfully updated.'
+        format.html { redirect_to('/') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

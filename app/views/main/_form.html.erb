@@ -1,13 +1,4 @@
-<div class="entryaction">
-<p>
-  <% unless action == 'Create' %>
-  <%= link_to 'Show', @family %> |
-  <% end %>
-  <%= link_to 'Back', families_path %>
-</p>
-</div>
-
-<% form_for(@family) do |f| %>
+<% form_for :main, @family, :url => { :controller => 'main', :action => 'update', :id => @family.id }, :html => { :method => :put } do |f| %>
   <%= f.error_messages %>
 
   <p>

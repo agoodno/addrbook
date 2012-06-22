@@ -10,16 +10,22 @@
     <th>Address</th>
   </tr>
 <% @families.each do |family| %>
-  <tr>
-    <td style="width: 35%;"><%= link_to h(family.full_name), main_path(family.id) %></td>
-    <td style="width: 50%;"><%=h family.full_address %></td>
+  <tr style="display: table-row;">
+    <td><%= link_to h(family.full_name), main_path(family.id) %></td>
+    <td><%=h family.full_address %></td>
     <td class="action">
-      <%= link_to_remote 'Edit', :url => { :controller => 'main', :action => 'edit_pre', :id => family.id }, :update => 'andy' %>
+      <%= link_to_remote 'Edit',
+          :url => {:action => 'say_when', :id => family.id },
+          :update => 'andy' + family.id.to_s %>
       <%= link_to 'Delete', main_path(family), :html => { :method => :delete }, :confirm => 'Are you sure?', :method => :delete %>
     </td>
   </tr>
+  <!-- <tr id="andyrow" style="display: none;"> -->
+  <!--   <td id="andy<%= family.id %>" colspan="3"> -->
+  <!--   </td> -->
+  <!-- </tr> -->
   <tr>
-    <td id="andy" colspan="3">
+    <td id="andy<%= family.id %>" colspan="3">
     </td>
   </tr>
 <% end %>
